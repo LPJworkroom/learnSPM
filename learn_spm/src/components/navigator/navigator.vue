@@ -1,27 +1,27 @@
 <template xmlns:v-for="http://www.w3.org/1999/xhtml">
     <div id="navigatorBar">
         <div v-for="link in links" :key="link">
-            <router-link :to="link.route" class="link" >
+            <router-link :to="{name:link.name}" class="link" >
                 <div>{{link.text}}</div>
             </router-link>
         </div>
 
 <!--        not logged in,show login button-->
         <div v-if="!userState.isLogged" class="userBar">
-            <button v-on:click="dsf()" class="loginButton">登陆</button>
+            <button v-on:click="this.openPopUp()" class="loginButton">登陆</button>
             <span>或</span>
-            <button v-on:click="dsf()" class="registerButton">注册</button>
+            <button v-on:click="openPopUp()" class="registerButton">注册</button>
         </div>
+<!--        logged in ,show user name and new link-->
         <div v-else>
             <div v-if="userState.userPosition==='student'">
-<!--                should replace link from vuex store-->
-                <router-link :to="'/myScore'" class="link">
+                <router-link :to="{name:'myScore'}" class="link">
                     我的成绩
                 </router-link>
             </div>
             <div v-if="userState.userPosition==='teacher'">
                 <!--                should replace link from vuex store-->
-                <router-link :to="'/manageTest'" class="link">
+                <router-link :to="{name:'manageTest'}" class="link">
                     管理测试
                 </router-link>
             </div>
@@ -38,12 +38,11 @@
 
         data() {
             return {
-                /*should replace link from vuex store*/
                 links:[
-                    {name:'index',text: '首页', route: '/',},
-                    {name:'download',text: '下载区', route: '/download',},
-                    {name:'bbs',text: '留言板', route: '/bbs',},
-                    {name:'onlineTest',text: '在线测试', route: '/onlineTest'}
+                    {name:'index',text: '首页',},
+                    {name:'download',text: '下载区',},
+                    {name:'bbs',text: '留言板',},
+                    {name:'onlineTest',text: '在线测试',}
                 ],
                 /*should replace with vuex store*/
                 userState:{
@@ -55,7 +54,9 @@
         },
 
         methods:{
+            openPopUp(){
 
+            },
         }
     }
 
