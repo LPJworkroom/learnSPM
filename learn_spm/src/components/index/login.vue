@@ -1,13 +1,13 @@
 <template>
     <div class="rightPart">
         <div class="buttonArea">
-            <button class="loginButton">登录</button>
-            <button class="loginButton" style="background: #d2691e">注册</button>
+            <button class="loginButton" style="background: #42b983"><div class="buttonText">登录</div></button>
+            <button class="loginButton" style="background: #d2691e"><div class="buttonText">注册</div></button>
         </div>
         <div class="listArea">
             <span>了解更多</span>
             <ul v-for="link in links" :key="link">
-                <li @click="scrollTo(link.toId)">{{link.text}}</li>
+                <li class="listLink" @click="scrollTo(link.toId)">{{link.text}}</li>
             </ul>
         </div>
     </div>
@@ -48,6 +48,27 @@
     }
 
     .loginButton{
-        width: ;
+        width:40%;
+        padding-top: 40%;
+        position: relative;
+    }
+
+    .buttonText{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .listArea{
+        width: 40%;
+    }
+
+    .listLink:hover{
+        cursor: pointer;
     }
 </style>

@@ -13,14 +13,12 @@
 
 <style scoped>
     .themePicture{
-        padding: 10px 5% 10px 5%;
-        height: 300px;
-        width: 50%;
+        width: 40%;
         float: left;
     }
 
     .themePic{
-        width: 70%;
+        width: 100%;
     }
 
     .slogan{
