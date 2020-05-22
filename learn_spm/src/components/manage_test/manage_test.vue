@@ -2,6 +2,7 @@
     <div>
         <test_info
                 v-for="(testinfo,index) in testsInfo"
+                :testid="testinfo.testid"
                 :test-name="testinfo.testName"
                 :create-date="testinfo.createDate"
                 :complete-num="testinfo.completeNum"
@@ -23,6 +24,7 @@
             return {
                 testsInfo:[
                     {
+                        testid:1,
                         testName: "单元一测试",
                         createDate:"2020-01-01 12:00:00",
                         completeNum:35,
@@ -30,6 +32,7 @@
                         unPassNum:10,
                     },
                     {
+                        testid:2,
                         testName: "单元二测试",
                         createDate:"2020-02-01 12:00:00",
                         completeNum:40,
