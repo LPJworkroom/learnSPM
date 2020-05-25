@@ -16,17 +16,18 @@
 <script>
     export default {
         name: "test_problem",
-        props:["title","options"],
+        props:["title","options","answer"],
         data(){
             return{
-                answer:undefined,
+                childAnswer:this.answer,
                 defaultBackground:"white",
                 selectedBackground:"green",
             };
         },
         methods:{
             select:function(index,event){
-                this.answer = index;
+                //this.answer = index;
+                this.childAnswer = index;
                 let curNode = event.target;
                 let parentNode = curNode.parentElement;
                 let childNodes = parentNode.children;
@@ -37,6 +38,11 @@
                 // forEach(let childNode in childNodes){
                 //     childNode.style.background="white";
                 // }
+            }
+        },
+        watch:{
+            childAnswer(newval){
+                this.$emit('update:answer',newval);
             }
         },
     }

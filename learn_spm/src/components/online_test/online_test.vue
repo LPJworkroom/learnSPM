@@ -7,6 +7,7 @@
                 :options = "prob.options"
                 :key = "index"
                 :ref = "index"
+                :answer.sync = "answer[index]"
         ></test_problem>
         <button
                 @click="submit"
@@ -44,6 +45,8 @@
                     },
                 ],
                 answer:[
+                    undefined,
+                    undefined
                 ],
             };
         },
