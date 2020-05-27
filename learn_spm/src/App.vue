@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <navigator></navigator>
-    <router-view></router-view>
+    <div style="width: 70%;margin-left: 15%">
+      <router-view ></router-view>
+    </div>
   </div>
 </template>
 

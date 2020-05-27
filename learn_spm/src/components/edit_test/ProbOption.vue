@@ -1,9 +1,9 @@
 <template>
     <div style="width: 50%">
-        <label style="float:left">{{String.fromCharCode('A'.charCodeAt(0)+idLcl)}}.
+        <label style="float:left">{{String.fromCharCode('A'.charCodeAt(0)+this.ind)}}.
             <input type="text" v-model="descLcl">
         </label>
-        <img style="float: left" src="../../assets/edit_test/close.png" alt="删除选项">
+        <img style="float: left" src="../../assets/edit_test/close.png" @click="deleteOption()" alt="删除选项">
         <div style="clear: both"></div>
     </div>
 </template>
@@ -12,12 +12,11 @@
     export default {
         name: "ProbOption",
         props:{
-            id:{type:Number,required:true},
+            ind:{type:Number,required:true},
             desc:{type:String}
         },
         data(){
             return{
-                idLcl:this.id,
                 descLcl:this.desc
             }
         },
@@ -25,6 +24,12 @@
         watch:{
             descLcl(val){
                 this.$emit("update:desc",val);
+            }
+        },
+
+        methods:{
+            deleteOption(){
+                this.$emit('optionDeleted',this.indLcl);
             }
         }
     }

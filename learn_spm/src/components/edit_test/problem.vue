@@ -6,44 +6,47 @@
             </button>
         </div>
         <div id="secondCol">
-            <div>
-                <label>{{id}}.题面：
+            <div style="text-align: left">
+                <label>{{this.ind+1}}.题面：
                     <input type="text" v-model="titleLcl">
                 </label>
             </div>
             <div ref="optionArea">
-                <ProbOption v-for="(option,id) in optionsLcl" :key="option" :desc.sync="option" :id="id"></ProbOption>
+                <ProbOption v-for="(option,ind) in optionsLcl" :key="option.id" :desc.sync="option.text" :ind="ind" @optionDeleted="deleteOption(ind)"></ProbOption>
             </div>
         </div>
         <div id="thirdCol">
             <button @click="addOption()">+选项</button>
-            <label>答案：
-                <select v-model="solutionLcl">
-                    <option v-for="ind in optionsLcl.length" :key="ind">
-                        {{String.fromCharCode("A".charCodeAt(0)+ind-1)}}
-                    </option>
-                </select>
-            </label>
+            <div>
+                <label>答案：
+                    <select v-model="solutionLcl">
+                        <option v-for="ind in optionsLcl.length" :key="ind" :value="ind-1">
+                            {{String.fromCharCode("A".charCodeAt(0)+ind-1)}}
+                        </option>
+                    </select>
+                </label>
+            </div>
         </div>
+        <div style="clear: both"></div>
     </div>
 </template>
 
 <script>
     import ProbOption from "@/components/edit_test/ProbOption";
+    import {addIdObj} from "@/components/uniqueCounter";
 
     export default {
         name: "problem",
         components: {ProbOption},
         props:{
-            id:{type:Number,required:true},
+            ind:{type:Number,required:true},
             title:{type:String},
             options:{type:Array},
-            solution:{}
+            solution:{type:Number}
         },
 
         data(){
             return{
-                idLcl:this.id,
                 titleLcl:this.title,
                 optionsLcl:this.options,
                 solutionLcl:this.solution
@@ -67,15 +70,39 @@
 
         methods:{
             deleteProblem(){
-
+                this.$emit('probDeleted',this.ind);
             },
             addOption(){
-                this.options.push(" ");
+                let obj={text:""};
+                addIdObj(obj);
+                this.optionsLcl.push(obj);
+            },
+            deleteOption(id){
+                /*maintain deleted answer*/
+                if (this.solutionLcl===id)
+                    this.solutionLcl=0;
+                else
+                    if (this.solutionLcl>id)
+                        this.solutionLcl-=1;
+                this.optionsLcl.splice(id,1);
+
             }
-        }
+        },
     }
 </script>
 
 <style scoped>
+    #firstCol{
+        float: left;
+        width: 15%;
+    }
 
+    #secondCol{
+        float: left;
+        width: 40%;
+    }
+
+    #thirdCol{
+        float: left;
+    }
 </style>
