@@ -9,6 +9,7 @@ import manage_test from "@/components/manage_test/manage_test";
 import download from "@/components/download/download";
 import edit_test from "@/components/edit_test/edit_test";
 import about from "@/components/about/about";
+import post from "./components/post/post";
 
 Vue.use(VueRouter)
 const router=new VueRouter({
@@ -53,6 +54,11 @@ const router=new VueRouter({
       name:'about',
       path: '/about',
       component: about
+    },
+    {
+      name:'post',
+      path:'/post',
+      component: post
     }
   ]
 })

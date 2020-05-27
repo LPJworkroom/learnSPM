@@ -1,5 +1,9 @@
 <template>
-    <div class="post">
+    <router-link
+            to="/post"
+            tag="div"
+            class="post"
+    >
         <div style="position: absolute;top: 0;right: 0;color: red;">X</div>
         <div>{{this.title}}</div>
         <div>{{this.introduction}}</div>
@@ -10,7 +14,19 @@
                     class="postinfo"
             >{{val}}</li>
         </ul>
-    </div>
+    </router-link>
+<!--    <div class="post">-->
+<!--        <div style="position: absolute;top: 0;right: 0;color: red;">X</div>-->
+<!--        <div>{{this.title}}</div>-->
+<!--        <div>{{this.introduction}}</div>-->
+<!--        <ul>-->
+<!--            <li-->
+<!--                    v-for="(val,key) in this.postInfo"-->
+<!--                    :key="key"-->
+<!--                    class="postinfo"-->
+<!--            >{{val}}</li>-->
+<!--        </ul>-->
+<!--    </div>-->
 </template>
 
 <script>
@@ -20,6 +36,7 @@
             "title",
             "introduction",
             "postInfo",
+            "postId",
         ],
 
     }
@@ -29,6 +46,7 @@
     .post{
         border: 1px solid black;
         position: relative;
+        cursor:pointer;
     }
     .postinfo{
         list-style: none;
