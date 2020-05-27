@@ -1,11 +1,12 @@
 <template>
     <div>
         <post_info
-                v-for="(post,index) in posts"
+                v-for="post in posts"
                 :title="post.title"
                 :introduction="post.introduction"
                 :post-info="post.postInfo"
-                :key="index"
+                :post-id="post.id"
+                :key="post.id"
         ></post_info>
     </div>
 </template>
@@ -21,6 +22,7 @@
             return {
                 posts:[
                     {
+                        id:"1",
                         title:"软件项目管理",
                         introduction:"yj yyds!",
                         postInfo:{
@@ -33,6 +35,7 @@
 
                     },
                     {
+                        id:"2",
                         title:"软件安全技术",
                         introduction:"cb yyds!",
                         postInfo:{
@@ -45,6 +48,7 @@
 
                     },
                     {
+                        id:"3",
                         title:"高级软件工程",
                         introduction:"dwf yyds!",
                         postInfo:{
@@ -56,6 +60,7 @@
                         },
                     },
                     {
+                        id:"4",
                         title:"编译原理",
                         introduction:"zm yyds!",
                         postInfo:{
