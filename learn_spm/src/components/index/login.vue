@@ -1,8 +1,8 @@
 <template>
     <div class="rightPart">
         <div class="buttonArea">
-            <button class="loginButton" style="background: #42b983"><div class="buttonText">登录</div></button>
-            <button class="loginButton" style="background: #d2691e"><div class="buttonText">注册</div></button>
+            <button class="loginButton" style="background: #42b983" @click="loginButtonClicked()"><div class="buttonText">登录</div></button>
+            <button class="loginButton" style="background: #d2691e" @click="registerButtonClicked()"><div class="buttonText">注册</div></button>
         </div>
         <div class="listArea">
             <span>了解更多</span>
@@ -31,6 +31,14 @@
             scrollTo(elId){
                 const el=document.getElementById(elId)
                 el&&el.scrollIntoView({behavior:"smooth",block:"start"})
+            },
+
+            loginButtonClicked(){
+                this.$emit('login-button-clicked');
+            },
+
+            registerButtonClicked(){
+                this.$emit('register-button-clicked');
             },
         }
     }
