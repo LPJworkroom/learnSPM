@@ -14,20 +14,42 @@
                 <div style="clear:both;"></div>
 
                 <div class="replyDate">{{this.replyDate}}</div>
-                <button class="replyBt">回复</button>
+<!--回复弹窗组件-->
+                <modal ref="reply_modal">
+                    <template
+                            slot="header"
+                    >
+                        <p>回复</p>
+                    </template>
+
+                    <template
+                            slot="body"
+                    >
+                        <input type="text">
+                    </template>
+
+                    <template
+                            slot="footer"
+                    >
+                        <button @click="replyFloor">提交</button>
+                    </template>
+                </modal>
+<!--回复弹窗组件结束-->
+                <button class="replyBt" @click="$refs['reply_modal'].open()">回复</button>
             </div>
 
             <div style="clear:both;"></div>
 
             <div class="replayContainer">
                 <reply_floor
-                        v-for="reply in this.replyFloors"
-                        :postid="reply.postid"
-                        :nick="reply.nick"
-                        :userid="reply.userid"
-                        :content="reply.content"
-                        :replyDate="reply.replyDate"
-                        :key="reply.postid"
+                        v-for="reply in this.my_replyFloors"
+                        :parentFloorid.sync="this.floorid"
+                        :floorid.sync="reply.floorid"
+                        :nick.sync="reply.nick"
+                        :content.sync="reply.content"
+                        :replyTonick.sync="reply.replyTonick"
+                        :replyDate.sync="reply.replyDate"
+                        :key="reply.floorid"
                 ></reply_floor>
 
             </div>
@@ -39,21 +61,59 @@
 <script>
     // eslint-disable-next-line no-unused-vars
     import reply_floor from "./reply_floor";
+    // eslint-disable-next-line no-unused-vars
+    import modal from "../pop_up_window/modal";
     export default {
         name: "floor",
-        components:{reply_floor},
-        props:["nick",
-            "userid",
+        components:{reply_floor,modal},
+        props:[
+            "floorid",
+            "nick",
             "content",
             "replyDate",
-            "isDisplayform",
-            "replyTo",
             "replyFloors",
         ],
         data(){
             return {
-
+                my_floorid:this.floorid,
+                my_nick:this.nick,
+                my_userid:this.userid,
+                my_content:this.content,
+                my_replyDate:this.replyDate,
+                my_replyFloors:this.replyFloors,
             };
+        },
+        methods:{
+            replyFloor:function(){
+                /*
+                    得到当前用户的userid,nick
+                    获取该楼中楼的属于哪一层楼，回复的是哪一层楼：this.my_floorid,this.my_floorid
+                    得到弹窗的表单中的回复内容
+                    得到当前时间
+                    传递给后端
+
+                 */
+            }
+        },
+        watch:{
+            my_floorid(val){
+                this.$emit('update:floorid',val);
+            },
+            my_nick(val){
+                this.$emit('update:nick',val);
+            },
+            my_userid(val){
+                this.$emit('update:userid',val);
+            },
+            my_content(val){
+                this.$emit('update:content',val);
+            },
+            my_replyDate(val){
+                this.$emit('update:replyDate',val);
+            },
+            my_replyFloors(val){
+                this.$emit('update:replyFloors',val);
+            },
         },
     }
 </script>

@@ -2,73 +2,96 @@
     <div>
         <floor
                 v-for="floor in floors"
-                :nick="floor.nick"
-                :userid="floor.userid"
-                :content="floor.content"
-                :replyDate="floor.replyDate"
-                :isDisplayform="floor.isDisplayform"
-                :replyTo="floor.replyTo"
-                :replyFloors="floor.replyFloors"
-                :key="floor.postid"
+                :floorid.sync="floor.floorid"
+                :nick.sync="floor.nick"
+                :content.sync="floor.content"
+                :replyDate.sync="floor.replyDate"
+                :replyFloors.sync="floor.replyFloors"
+                :key="floor.floorid"
         ></floor>
+        <modal ref="reply_modal">
+            <template
+                    slot="header"
+            >
+                <p>回复</p>
+            </template>
+
+            <template
+                    slot="body"
+            >
+                <input type="text">
+            </template>
+
+            <template
+                    slot="footer"
+            >
+                <button @click="replyPost">提交</button>
+            </template>
+        </modal>
+        <button @click="$refs['reply_modal'].open()">回复</button>
     </div>
 </template>
 
 <script>
     // eslint-disable-next-line no-unused-vars
     import floor from "./floor";
+    // eslint-disable-next-line no-unused-vars
+    import modal from "../pop_up_window/modal";
     export default {
         name: "post",
         // eslint-disable-next-line vue/no-unused-components
-        components:{floor},
+        components:{floor,modal},
         data(){
             return {
                 floors:[
                     {
-                        postid:1,
+                        floorid:1,
                         nick:"xiaoming",
-                        userid:1,
                         content:"asdfawewagaqwferefwqfwjewfaioiwjf",
                         replyDate:"2020-01-01 00:00:00",
-                        isDisplayform:false,
-                        replyTo:1,
                         replyFloors:[
                             {
-                                postid:2,
+                                floorid:2,
                                 nick:"xiaohong",
-                                userid:2,
                                 content:"agawewrqrwqfgsgsdfasdadadafa",
+                                replyTonick:"xiaoming",
                                 replyDate:"2020-01-01 00:00:00",
                             },
                         ],
                     },
                     {
-                        postid:3,
+                        floorid:3,
                         nick:"和服务和",
-                        userid:3,
                         content:"asdfawewagaqwferefwqfwjewfaioiwjf",
                         replyDate:"2020-01-01 00:00:00",
-                        isDisplayform:false,
-                        replyTo:3,
                         replyFloors:[
                             {
-                                postid:4,
+                                floorid:4,
                                 nick:"啊噶发",
-                                userid:4,
                                 content:"agawewrqrwqfgsgsdfasdadadafa",
+                                replyTonick: "和服务和",
                                 replyDate:"2020-01-01 00:00:00",
                             },
                             {
-                                postid:5,
+                                floorid:5,
                                 nick:"更丰富",
-                                userid:5,
                                 content:"agawewrqrwqfgsgsdfasdadadafa",
+                                replyTonick: "啊噶发",
                                 replyDate:"2020-01-01 00:00:00",
                             },
                         ],
                     },
                 ],
             };
+        },
+        methods:{
+            replyPost:function () {
+                /*得到当前登录用户的userid,nick
+                  得到弹窗的表单中的回复内容
+                  得到当前时间
+                  传递给后端
+                */
+            }
         },
     }
 </script>
