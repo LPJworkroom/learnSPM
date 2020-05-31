@@ -2,7 +2,6 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import index from "@/components/index/index";
-import online_test from "@/components/online_test/online_test";
 import bbs from "@/components/bbs/bbs"
 import my_score from "@/components/my_score/my_score";
 import manage_test from "@/components/manage_test/manage_test";
@@ -10,6 +9,8 @@ import download from "@/components/download/download";
 import edit_test from "@/components/edit_test/edit_test";
 import about from "@/components/about/about";
 import post from "./components/post/post";
+import show_test from "@/components/show_test/show_test";
+import online_test from "@/components/online_test/online_test";
 
 Vue.use(VueRouter)
 const router=new VueRouter({
@@ -21,9 +22,9 @@ const router=new VueRouter({
       component:index
     },
     {
-      name:'onlineTest',
-      path:'/onlineTest',
-      component: online_test
+      name:'showTest',
+      path:'/showTest',
+      component: show_test
     },
     {
       name:'bbs',
@@ -59,6 +60,11 @@ const router=new VueRouter({
       name:'post',
       path:'/post',
       component: post
+    },
+    {
+      name:'onlineTest',
+      path:'/onlineTest',
+      component: online_test
     }
   ]
 })

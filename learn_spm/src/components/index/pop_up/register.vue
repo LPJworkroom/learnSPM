@@ -26,8 +26,6 @@
     export default {
         name: "register_pop_up",
         components:{modal},
-        data(){
-        },
 
         methods:{
             open(){

@@ -1,6 +1,6 @@
 <template xmlns:v-for="http://www.w3.org/1999/xhtml">
     <div id="navigatorBar">
-        <div v-for="link in links" :key="link">
+        <div v-for="(link,ind) in links" :key="ind">
             <router-link :to="{name:link.name}" class="link" >
                 <div>{{link.text}}</div>
             </router-link>
@@ -42,7 +42,7 @@
                     {name:'index',text: '首页',},
                     {name:'download',text: '下载区',},
                     {name:'bbs',text: '留言板',},
-                    {name:'onlineTest',text: '在线测试',}
+                    {name:'showTest',text: '在线测试',}
                 ],
                 /*should replace with vuex store*/
                 userState:{

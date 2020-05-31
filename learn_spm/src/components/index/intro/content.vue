@@ -1,5 +1,5 @@
 <template>
-    <div id="content">
+    <div class="content">
         <div id="container">
             <span v-for="i in 3" :key="i" class="descText">
                 this is description for content.this is description for content.
@@ -10,12 +10,12 @@
 
 <script>
     export default {
-        name: "content"
+        name: "contentDesc"
     }
 </script>
 
 <style scoped>
-    #content{
+    .content{
         width: 100%;
         min-height: 300px;
         background: rgba(98,23,133,0.78);

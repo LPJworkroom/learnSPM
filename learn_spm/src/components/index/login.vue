@@ -6,7 +6,7 @@
         </div>
         <div class="listArea">
             <span>了解更多</span>
-            <ul v-for="link in links" :key="link">
+            <ul v-for="(link,ind) in links" :key="ind">
                 <li class="listLink" @click="scrollTo(link.toId)">{{link.text}}</li>
             </ul>
         </div>

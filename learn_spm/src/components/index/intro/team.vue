@@ -1,7 +1,7 @@
 <template>
     <div id="team">
         <div id="container">
-            <div v-for="mem in teamMem" :key="mem" class="teacherContainer">
+            <div v-for="(mem,ind) in teamMem" :key="ind" class="teacherContainer">
                 <img :src="mem.avatar" width="100">
                 <div class="descText">
                     <p>{{mem.name}}</p>

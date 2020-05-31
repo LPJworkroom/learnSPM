@@ -14,12 +14,8 @@
             <practice></practice>
             <team></team>
         </div>
-
         <login_pop_up ref="login-pop-up" @login="login"></login_pop_up>
         <register_pop_up ref="register-pop-up" @register="register"></register_pop_up>
-
-
-
     </div>
 </template>
 
@@ -38,9 +34,6 @@
         components:{
             // eslint-disable-next-line vue/no-unused-components
             leftPart,rightPart,course,contentDesc,practice,team,login_pop_up,register_pop_up
-        },
-        
-        data:function() {
         },
 
         methods:{
