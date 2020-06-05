@@ -37,8 +37,9 @@
         },
 
         methods:{
-            login(){
+            login(acc,pw){
                 console.log("login now!");
+                
             },
             register(){
                 console.log("register now!");
