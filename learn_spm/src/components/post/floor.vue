@@ -43,7 +43,7 @@
             <div class="replayContainer">
                 <reply_floor
                         v-for="reply in this.my_replyFloors"
-                        :parentFloorid.sync="this.floorid"
+                        :parentFloorid.sync="my_floorid"
                         :floorid.sync="reply.floorid"
                         :nick.sync="reply.nick"
                         :content.sync="reply.content"
@@ -77,7 +77,6 @@
             return {
                 my_floorid:this.floorid,
                 my_nick:this.nick,
-                my_userid:this.userid,
                 my_content:this.content,
                 my_replyDate:this.replyDate,
                 my_replyFloors:this.replyFloors,
@@ -102,9 +101,7 @@
             my_nick(val){
                 this.$emit('update:nick',val);
             },
-            my_userid(val){
-                this.$emit('update:userid',val);
-            },
+
             my_content(val){
                 this.$emit('update:content',val);
             },

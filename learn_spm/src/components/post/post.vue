@@ -93,6 +93,35 @@
                 */
             }
         },
+        mounted:function() {
+            let params = new URLSearchParams();
+            params.append('postid', '1');
+            //let postid = {postid: 1};
+            this.axios.post('/api/php/getFloors.php', params).then((resp) => {
+                console.log(resp.data);
+                //将后台获取的userinfo保存至前台的浏览器缓存中，resp代表response,resp.data代表获取的用户信息
+                //通过获取vuex的store对象，调用其commit方法存储从后台获取到的user对象
+                //this.$store.commit("setUser", resp.data);
+                //进入详情页，实际上是让router的路径指向/index
+                //this.$router.push({path: "/index"});
+            })
+
+            //     fetch('/getFloors.php', {
+            //         method: 'post',
+            //         headers: new Headers({ //解决跨域
+            //             'Content-Type': "application/x-www-form-urlencoded"
+            //         }),
+            //         body: new URLSearchParams([
+            //             ['postid', 1],
+            //         ]).toString()
+            //     })
+            //         .then(res => res.text())
+            //         .then(data => console.log(data))
+            //         .catch(error => {
+            //             if (error) throw error
+            //         })
+            // }
+        }
     }
 </script>
 
