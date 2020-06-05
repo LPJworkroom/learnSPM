@@ -43,45 +43,46 @@
         components:{floor,modal},
         data(){
             return {
-                floors:[
-                    {
-                        floorid:1,
-                        nick:"xiaoming",
-                        content:"asdfawewagaqwferefwqfwjewfaioiwjf",
-                        replyDate:"2020-01-01 00:00:00",
-                        replyFloors:[
-                            {
-                                floorid:2,
-                                nick:"xiaohong",
-                                content:"agawewrqrwqfgsgsdfasdadadafa",
-                                replyTonick:"xiaoming",
-                                replyDate:"2020-01-01 00:00:00",
-                            },
-                        ],
-                    },
-                    {
-                        floorid:3,
-                        nick:"和服务和",
-                        content:"asdfawewagaqwferefwqfwjewfaioiwjf",
-                        replyDate:"2020-01-01 00:00:00",
-                        replyFloors:[
-                            {
-                                floorid:4,
-                                nick:"啊噶发",
-                                content:"agawewrqrwqfgsgsdfasdadadafa",
-                                replyTonick: "和服务和",
-                                replyDate:"2020-01-01 00:00:00",
-                            },
-                            {
-                                floorid:5,
-                                nick:"更丰富",
-                                content:"agawewrqrwqfgsgsdfasdadadafa",
-                                replyTonick: "啊噶发",
-                                replyDate:"2020-01-01 00:00:00",
-                            },
-                        ],
-                    },
-                ],
+                floors:undefined,
+                // floors:[
+                //     {
+                //         floorid:1,
+                //         nick:"xiaoming",
+                //         content:"asdfawewagaqwferefwqfwjewfaioiwjf",
+                //         replyDate:"2020-01-01 00:00:00",
+                //         replyFloors:[
+                //             {
+                //                 floorid:2,
+                //                 nick:"xiaohong",
+                //                 content:"agawewrqrwqfgsgsdfasdadadafa",
+                //                 replyTonick:"xiaoming",
+                //                 replyDate:"2020-01-01 00:00:00",
+                //             },
+                //         ],
+                //     },
+                //     {
+                //         floorid:3,
+                //         nick:"和服务和",
+                //         content:"asdfawewagaqwferefwqfwjewfaioiwjf",
+                //         replyDate:"2020-01-01 00:00:00",
+                //         replyFloors:[
+                //             {
+                //                 floorid:4,
+                //                 nick:"啊噶发",
+                //                 content:"agawewrqrwqfgsgsdfasdadadafa",
+                //                 replyTonick: "和服务和",
+                //                 replyDate:"2020-01-01 00:00:00",
+                //             },
+                //             {
+                //                 floorid:5,
+                //                 nick:"更丰富",
+                //                 content:"agawewrqrwqfgsgsdfasdadadafa",
+                //                 replyTonick: "啊噶发",
+                //                 replyDate:"2020-01-01 00:00:00",
+                //             },
+                //         ],
+                //     },
+                // ],
             };
         },
         methods:{
@@ -99,6 +100,7 @@
             //let postid = {postid: 1};
             this.axios.post('/api/php/getFloors.php', params).then((resp) => {
                 console.log(resp.data);
+                this.floors = resp.data;
                 //将后台获取的userinfo保存至前台的浏览器缓存中，resp代表response,resp.data代表获取的用户信息
                 //通过获取vuex的store对象，调用其commit方法存储从后台获取到的user对象
                 //this.$store.commit("setUser", resp.data);
