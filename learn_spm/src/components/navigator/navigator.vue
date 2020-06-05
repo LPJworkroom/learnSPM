@@ -31,6 +31,7 @@
 </template>
 
 <script>
+
     export default {
         name: "navigator",
         props:{
@@ -44,12 +45,12 @@
                     {name:'bbs',text: '留言板',},
                     {name:'showTest',text: '在线测试',}
                 ],
-                /*should replace with vuex store*/
-                userState:{
-                    isLogged:true,
-                    userName:'19170101',
-                    userPosition:'student',
-                }
+            }
+        },
+
+        computed:{
+            userState(){
+                return this.$store.state.userInfo;
             }
         },
 

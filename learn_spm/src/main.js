@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
+import Vuex from 'vuex'
 import index from "@/components/index/index";
 import bbs from "@/components/bbs/bbs"
 import my_score from "@/components/my_score/my_score";
@@ -13,6 +14,8 @@ import show_test from "@/components/show_test/show_test";
 import online_test from "@/components/online_test/online_test";
 
 Vue.use(VueRouter)
+Vue.use(Vuex)
+
 const router=new VueRouter({
   mode:'history',
   routes:[
@@ -69,9 +72,22 @@ const router=new VueRouter({
   ]
 })
 
+let store= new Vuex.Store({
+  state: {
+    userInfo: {
+      isLogged:false,
+      account: undefined,
+      position: undefined
+    }
+  }
+})
+
+
+
 Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
-  router:router
+  router,
+  store,
 }).$mount('#app')
