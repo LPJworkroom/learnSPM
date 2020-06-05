@@ -11,6 +11,7 @@ import about from "@/components/about/about";
 import post from "./components/post/post";
 import show_test from "@/components/show_test/show_test";
 import online_test from "@/components/online_test/online_test";
+import './plugins/axios'
 
 Vue.use(VueRouter)
 const router=new VueRouter({
