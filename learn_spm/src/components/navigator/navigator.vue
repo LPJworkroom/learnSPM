@@ -1,32 +1,43 @@
 <template xmlns:v-for="http://www.w3.org/1999/xhtml">
-    <div id="navigatorBar">
-        <div v-for="(link,ind) in links" :key="ind">
-            <router-link :to="{name:link.name}" class="link" >
-                <div>{{link.text}}</div>
-            </router-link>
-        </div>
 
-<!--        not logged in,show login button-->
-        <div v-if="!userState.isLogged" class="userBar">
-            <button v-on:click="this.openPopUp()" class="loginButton">登陆</button>
-            <span>或</span>
-            <button v-on:click="openPopUp()" class="registerButton">注册</button>
-        </div>
+    <div style="background-color: #e3f2fd;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">LearnSPM</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">dfsd</span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li v-for="(link,ind) in links" :key="ind" class="nav-item active">
+                        <router-link :to="{name:link.name}" class="nav-link">{{link.text}}</router-link>
+                    </li>
+                </ul>
+            </div>
+            <div v-if="!userState.isLogged" class="userBar">
+                <button v-on:click="parent.parent.$emit('login-button-clicked')" class="btn btn-primary">登陆</button>
+                <span> 或 </span>
+                <button v-on:click="parent.$emit('register-button-clicked')" class="btn btn-secondary">注册</button>
+            </div>
+            <div v-else>
+                <div v-if="userState.position==='1'">
+                    <router-link :to="{name:'myScore'}" class="link">
+                        我的成绩
+                    </router-link>
+                </div>
+                <div v-if="userState.position==='0'">
+                    <!--                should replace link from vuex store-->
+                    <router-link :to="{name:'manageTest'}" class="nav-item active">
+                        管理测试
+                    </router-link>
+                </div>
+                <span>欢迎，{{userState.account}}</span>
+            </div>
+        </nav>
+
+
+        <!--        not logged in,show login button-->
 <!--        logged in ,show user name and new link-->
-        <div v-else>
-            <div v-if="userState.userPosition==='student'">
-                <router-link :to="{name:'myScore'}" class="link">
-                    我的成绩
-                </router-link>
-            </div>
-            <div v-if="userState.userPosition==='teacher'">
-                <!--                should replace link from vuex store-->
-                <router-link :to="{name:'manageTest'}" class="link">
-                    管理测试
-                </router-link>
-            </div>
-            <span>欢迎，{{userState.userName}}</span>
-        </div>
+
     </div>
 </template>
 
@@ -68,27 +79,6 @@
 </script>
 
 <style scoped>
-    div{
-        border: black 1px solid;
-    }
-
-    #navigatorBar{
-        margin: auto;
-        width:100%;
-        height:80px;
-        border: black 1px solid;
-    }
-
-    .link{
-        float:left;
-        margin-right:5%;
-        width: 10%;
-        height:50px;
-        display: flex;
-        align-items: center;
-        background: #42b983;
-    }
-
     .userBar{
         float: right;
         width: 20%;
@@ -99,5 +89,9 @@
     }
     .registerButton{
 
+    }
+
+    span{
+        color:white
     }
 </style>

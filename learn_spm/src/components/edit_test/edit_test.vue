@@ -1,14 +1,16 @@
 <template>
-    <div>
-        <problem v-for="(prob,ind) in probs" :key="prob.id" :ind="ind" :title.sync="prob.title"
-                 :options.sync="prob.options" :solution.sync="prob.solution" @probDeleted="deleteProblem(ind)"></problem>
+    <div style="width: 70%">
+        <div class="list-group">
+            <problem class="list-group-item" v-for="(prob,ind) in probs" :key="prob.id" :ind="ind" :title.sync="prob.title"
+                     :options.sync="prob.options" :solution.sync="prob.solution" @probDeleted="deleteProblem(ind)"></problem>
+        </div>
         <div id="editButtonArea" style="float:left;">
-            <button @click="addProblem('FourRadio')">+四选项单选题</button>
-            <button @click="addProblem('TrueFalse')">+判断题</button>
-            <button @click="addProblem()">+不定项单选题</button>
+            <button @click="addProblem('FourRadio')" class="btn btn-info">+四选项单选题</button>
+            <button @click="addProblem('TrueFalse')" class="btn btn-info">+判断题</button>
+            <button @click="addProblem()" class="btn btn-info">+不定项单选题</button>
         </div>
         <div style="clear: both"></div>
-        <button @click="submitEdit()">提交</button>
+        <button @click="submitEdit()" class="btn btn-success">提交</button>
     </div>
 </template>
 
@@ -85,5 +87,8 @@
 </script>
 
 <style scoped>
-
+    button{
+        margin-right:15px;
+        margin-top:10px;
+    }
 </style>

@@ -13,9 +13,15 @@ import post from "./components/post/post";
 import show_test from "@/components/show_test/show_test";
 import online_test from "@/components/online_test/online_test";
 import './plugins/axios'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
+
 
 const router=new VueRouter({
   mode:'history',
@@ -75,14 +81,20 @@ const router=new VueRouter({
 
 let store= new Vuex.Store({
   state: {
-    userInfo: {
-      isLogged:false,
-      account: undefined,
-      position: undefined
-    }
+      userInfo:{
+        isLogged:true,
+        account: '1982932',
+        position: '1',
+        avatar:''
+      }
+    // userInfo: {
+    //   isLogged:false,
+    //   account: undefined,
+    //   position: undefined,
+    //   avatar:undefined
+    // }
   }
 })
-
 
 
 Vue.config.productionTip = false

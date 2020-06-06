@@ -6,17 +6,17 @@
         <template v-slot:body>
             <div>
                 <label>账号
-                    <input type="text">
+                    <input type="text" class="form-control">
                 </label>
             </div>
             <div>
                 <label>密码
-                    <input type="password">
+                    <input type="password" class="form-control">
                 </label>
             </div>
         </template>
         <template v-slot:footer>
-            <button @click="this.$emit('register')">注册</button>
+            <button @click="this.$emit('register')" class="btn btn-info">注册</button>
         </template>
     </modal>
 </template>

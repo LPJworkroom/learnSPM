@@ -1,10 +1,10 @@
 <template>
     <div class="outer">
         <div class="inner">
-            <div class="title">{{title}}</div>
-            <ul class="answerList">
+            <div class="list-group-item active">{{title}}</div>
+            <ul class="list-group">
                 <li v-for="(option,index) in options"
-                    class="answerOption"
+                    class="list-group-item"
                     :key="index"
                     @click="select(index,$event)"
                 >{{String.fromCharCode('A'.charCodeAt()+index)}}.{{option}}</li>
@@ -21,7 +21,7 @@
             return{
                 childAnswer:this.answer,
                 defaultBackground:"white",
-                selectedBackground:"green",
+                selectedBackground:"#4CAF50",
             };
         },
         methods:{
@@ -52,11 +52,9 @@
     .outer{
         display: flex;
         justify-content: center;
-        border:1px solid black;
     }
     .inner{
         width:50%;
-        border:1px solid red;
     }
     .title{
         text-align:left;

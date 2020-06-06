@@ -6,17 +6,17 @@
         <template v-slot:body>
             <div>
                 <label>账号
-                    <input type="text">
+                    <input type="text" class="form-control" v-model="acc">
                 </label>
             </div>
             <div>
                 <label>密码
-                    <input type="password">
+                    <input type="password" class="form-control" v-model="pw">
                 </label>
             </div>
         </template>
         <template v-slot:footer>
-            <button @click="this.$emit('login')">登陆</button>
+            <button @click="$emit('login',acc,pw)" class="btn btn-info">登陆</button>
         </template>
     </modal>
 </template>
@@ -28,6 +28,14 @@
         components:{
             modal
         },
+
+        data(){
+          return {
+              acc:'',
+              pw:''
+          }
+        },
+
         methods:{
             open(){
                 this.$refs.modal.open();

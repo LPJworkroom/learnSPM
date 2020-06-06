@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="list-group" style="width: 70%;">
 <!--        <p>this is online_test component</p>-->
-        <test_problem
+        <test_problem class="list-group-item" style="border:none"
                 v-for = "(prob,index) in probList"
                 :title = "prob.title"
                 :options = "prob.options"
@@ -10,7 +10,7 @@
                 :answer.sync = "answer[index]"
         ></test_problem>
         <button
-                @click="submit"
+                @click="submit" class="btn btn-info btn-lg"
         >提交</button>
     </div>
 </template>

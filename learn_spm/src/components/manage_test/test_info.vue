@@ -1,5 +1,5 @@
 <template>
-    <div class="bar">
+    <div class="">
         <router-link to="/" tag="div" class="testname">{{testName}}</router-link>
 <!--        <div class="testname">{{testName}}</div>-->
         <div class="clearfloat"></div>
@@ -11,10 +11,11 @@
             <div class="rightinfo">
                 <span class="iteminfo">{{warningLine}}</span>
                 <span class="iteminfo">{{unPassNum}}</span>
-                <router-link to="/editTest" tag="button">编辑测试</router-link>
+                <router-link to="/editTest" tag="button" class="btn btn-info">编辑测试</router-link>
 <!--                <button>编辑测试</button>-->
             </div>
-        </div></div>
+        </div>
+    </div>
 
 </template>
 

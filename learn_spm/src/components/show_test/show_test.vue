@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <test_info v-for="test in testInfo" :info="test" :key="test.id"></test_info>
+    <div class="list-group" style="width: 70%">
+        <test_info class="list-group-item" v-for="test in testInfo" :info="test" :key="test.id"></test_info>
     </div>
 
 </template>

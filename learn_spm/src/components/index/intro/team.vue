@@ -1,11 +1,11 @@
 <template>
     <div id="team">
         <div id="container">
-            <div v-for="(mem,ind) in teamMem" :key="ind" class="teacherContainer">
-                <img :src="mem.avatar" width="100">
-                <div class="descText">
-                    <p>{{mem.name}}</p>
-                    <p>{{mem.desc}}</p>
+            <div v-for="(mem,ind) in teamMem" :key="ind" class="card" style="width: 25%;padding-top:25px;margin-right:2%;margin-left:2%;background: rgba(0,0,0,0.2)">
+                <img :src="mem.avatar" width="100" class="card-img-top avatar-container" style="width: 30%;margin:0 auto;">
+                <div class="card-body" style="text-align: center;background: ghostwhite">
+                    <p class="card-text">{{mem.name}}</p>
+                    <p class="card-text">{{mem.desc}}</p>
                 </div>
             </div>
         </div>
@@ -18,9 +18,9 @@
         data(){
             return {
                 teamMem:[
-                    {avatar:require('../../../assets/index/testAvatar.png'),name:'lllss1',desc:'this is description for teacher.this is description for teacher.'},
-                    {avatar:require('../../../assets/index/testAvatar.png'),name:'lllss2',desc:'this is description for teacher.this is description for teacher.'},
-                    {avatar:require('../../../assets/index/testAvatar.png'),name:'lllss3',desc:'this is description for teacher.this is description for teacher.'},
+                    {avatar:require('../../../assets/index/person.png'),name:'教师1',desc:'教授'},
+                    {avatar:require('../../../assets/index/man.png'),name:'教师2',desc:'讲师'},
+                    {avatar:require('../../../assets/index/woman.png'),name:'教师3',desc:'教授'},
                 ]
             }
         }
@@ -30,29 +30,31 @@
 <style scoped>
     #team{
         width: 100%;
-        min-height: 300px;
-        background: rgba(97, 39, 94, 0.78);
+        min-height: 500px;
+        background-image: url('~@/assets/index/desc(4).jpg');
+        background-size: cover;
         position: relative;
     }
 
     #container{
         box-sizing: border-box;
         width: 100%;
-        padding-top:10%;
+        padding-top:100px;
         display: flex;
         justify-content: center;
     }
 
-    .teacherContainer{
-        width: 25%;
-        padding: 0 10% 0 10%;
-        float: left;
-    }
 
     .descText{
         color: whitesmoke;
         font-family: Consolas;
         font-size: 25px;
         color: whitesmoke;
+    }
+
+    .avatar-container{
+        background: white;
+        border-radius: 100%;
+        border: black 5px solid;
     }
 </style>

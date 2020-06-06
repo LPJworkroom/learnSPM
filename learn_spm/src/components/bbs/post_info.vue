@@ -44,7 +44,6 @@
 
 <style scoped>
     .post{
-        border: 1px solid black;
         position: relative;
         cursor:pointer;
     }

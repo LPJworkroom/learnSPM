@@ -1,7 +1,8 @@
 <template>
-    <div>
+    <div class="list-group" style="width: 70%">
         <post_info
                 v-for="post in posts"
+                class="list-group-item"
                 :title="post.title"
                 :introduction="post.introduction"
                 :post-info="post.postInfo"

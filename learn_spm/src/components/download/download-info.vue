@@ -1,6 +1,6 @@
 <template>
-    <div class="bar">
-        <router-link :to="info.url" tag="div" class="testname">{{info.name}}</router-link>
+    <div class="">
+        <router-link :to="info.url"  tag="div" class="testname">{{info.name}}</router-link>
         <div class="clearfloat"></div>
         <div>
             <div class="leftinfo">
@@ -11,8 +11,10 @@
             </div>
             <div class="rightinfo">
                 <span class="iteminfo">{{info.dlCount}} 次下载</span>
+                <router-link :to="info.url"  tag="button" class="btn btn-info">下载{{info.name}}</router-link>
             </div>
-        </div></div>
+        </div>
+    </div>
 
 </template>
 

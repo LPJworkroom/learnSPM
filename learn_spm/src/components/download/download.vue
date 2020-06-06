@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <download_info v-for="dl in dlInfo" :info="dl" :key="dl.id"></download_info>
+    <div class="list-group" style="width: 70%">
+        <download_info class="list-group-item" v-for="dl in dlInfo" :info="dl" :key="dl.id"></download_info>
     </div>
 
 </template>

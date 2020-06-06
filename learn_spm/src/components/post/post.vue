@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <floor
+    <div class="list-group" style="width: 70%;">
+        <floor class="list-group-item"
                 v-for="floor in floors"
                 :floorid.sync="floor.floorid"
                 :nick.sync="floor.nick"
@@ -28,7 +28,7 @@
                 <button @click="replyPost">提交</button>
             </template>
         </modal>
-        <button @click="$refs['reply_modal'].open()">回复</button>
+        <button @click="$refs['reply_modal'].open()" class="btn btn-info btn-lg" style="width: 20%">回复</button>
     </div>
 </template>
 

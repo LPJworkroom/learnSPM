@@ -1,30 +1,28 @@
 <template>
     <div>
         <div id="firstCol">
-            <button @click="deleteProblem()">
-                <img src="../../assets/edit_test/close.png" width="24" style="width: 80%" alt="删除题目">
-            </button>
+            <button @click="deleteProblem()" class="btn btn-danger">删除题目</button>
         </div>
         <div id="secondCol">
             <div style="text-align: left">
                 <label>{{this.ind+1}}.题面：
-                    <input type="text" v-model="titleLcl">
+                    <input type="text" v-model="titleLcl" class="form-control">
                 </label>
             </div>
-            <div ref="optionArea">
-                <ProbOption v-for="(option,ind) in optionsLcl" :key="option.id" :desc.sync="option.text" :ind="ind" @optionDeleted="deleteOption(ind)"></ProbOption>
+            <div ref="optionArea" class="list-group">
+                <ProbOption class="list-group-item" v-for="(option,ind) in optionsLcl" :key="option.id" :desc.sync="option.text" :ind="ind" @optionDeleted="deleteOption(ind)"></ProbOption>
             </div>
         </div>
         <div id="thirdCol">
-            <button @click="addOption()">+选项</button>
+            <button @click="addOption()" class="btn btn-primary">+选项</button>
             <div>
-                <label>答案：
-                    <select v-model="solutionLcl">
+                <span>答案：
+                    <select v-model="solutionLcl" class="form-control form-control-lg">
                         <option v-for="ind in optionsLcl.length" :key="ind" :value="ind-1">
                             {{String.fromCharCode("A".charCodeAt(0)+ind-1)}}
                         </option>
                     </select>
-                </label>
+                </span>
             </div>
         </div>
         <div style="clear: both"></div>
@@ -94,15 +92,17 @@
 <style scoped>
     #firstCol{
         float: left;
-        width: 15%;
+        width: 20%;
     }
 
     #secondCol{
         float: left;
-        width: 40%;
+        width: 60%;
     }
 
     #thirdCol{
-        float: left;
+        float: right;
+        width: 15%;
+        margin-right:5%
     }
 </style>

@@ -31,17 +31,17 @@
                     <template
                             slot="footer"
                     >
-                        <button @click="replyFloor">提交</button>
+                        <button @click="replyFloor" class="btn btn-info">提交</button>
                     </template>
                 </modal>
 <!--回复弹窗组件结束-->
-                <button class="replyBt" @click="$refs['reply_modal'].open()">回复</button>
+                <button class="btn btn-info" @click="$refs['reply_modal'].open()">回复</button>
             </div>
 
             <div style="clear:both;"></div>
 
-            <div class="replayContainer">
-                <reply_floor
+            <div class="replayContainer list-group">
+                <reply_floor class="list-group-item"
                         v-for="reply in this.my_replyFloors"
                         :parentFloorid.sync="my_floorid"
                         :floorid.sync="reply.floorid"
@@ -118,7 +118,6 @@
 <style scoped>
     .floor{
         overflow: auto;
-        border: 1px solid blue;
     }
     .avatarContainer{
         float:left;

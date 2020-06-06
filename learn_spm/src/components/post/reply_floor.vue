@@ -37,7 +37,7 @@
                 </modal>
 <!--回复弹窗组件结束-->
 
-                <button class="replyBt" @click="$refs['reply_modal'].open()">回复</button>
+                <button class="btn btn-info" @click="$refs['reply_modal'].open()">回复</button>
             </div>
 
         </div>
@@ -106,7 +106,6 @@
 <style scoped>
     .floor{
         overflow: auto;
-        border: 1px solid blue;
     }
     .avatarContainer{
         float:left;

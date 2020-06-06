@@ -1,8 +1,14 @@
 <template>
-    <div class="content">
+    <div id="content-desc" style="">
         <div id="container">
-            <span v-for="i in 3" :key="i" class="descText">
-                this is description for content.this is description for content.
+            <span class="descText">
+                本课程的通过学习项目管理的基本理论、技术和方法，提高学员分析和解决软件项目管理问题的能力。
+            </span>
+            <span class="descText">
+                主要包括：项目及项目管理的概念、项目定义、范围管理、项目组织、项目计划、
+            </span>
+            <span class="descText">
+                进度管理、成本控制、项目跟踪、交流沟通、风险管理、项目结束等.
             </span>
         </div>
     </div>
@@ -15,11 +21,16 @@
 </script>
 
 <style scoped>
-    .content{
+    #content-desc{
         width: 100%;
-        min-height: 300px;
-        background: rgba(98,23,133,0.78);
+        height: 500px;
         position: relative;
+        background:linear-gradient(
+                rgba(0, 0, 0, 0.5),
+                rgba(0, 0, 0, 0.5)
+        ),url('~@/assets/index/desc(1).jpg');
+        background-size: cover;
+        background-blend-mode: darken;
     }
 
     #container{

@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <test_info
+    <div class="list-group" style="width: 70%">
+        <test_info class="list-group-item"
                 v-for="(testinfo,index) in testsInfo"
                 :testid="testinfo.testid"
                 :test-name="testinfo.testName"

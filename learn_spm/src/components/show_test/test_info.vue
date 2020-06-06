@@ -1,5 +1,5 @@
 <template>
-    <div class="bar">
+    <div class="">
         <router-link :to="{name:'onlineTest'}" tag="div" class="testname">{{info.name}}</router-link>
         <div class="clearfloat"></div>
         <div>

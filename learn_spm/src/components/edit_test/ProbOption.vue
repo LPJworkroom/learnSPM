@@ -1,9 +1,9 @@
 <template>
-    <div style="width: 50%">
-        <label style="float:left">{{String.fromCharCode('A'.charCodeAt(0)+this.ind)}}.
-            <input type="text" v-model="descLcl">
+    <div style="width: 70%;">
+        <label ><span>{{String.fromCharCode('A'.charCodeAt(0)+this.ind)}}.</span>
+            <input type="text" v-model="descLcl" class="form-control" style="float:left;">
         </label>
-        <img style="float: left" src="../../assets/edit_test/close.png" @click="deleteOption()" alt="删除选项">
+        <button class="btn btn-danger" style="float:right;">删除选项</button>
         <div style="clear: both"></div>
     </div>
 </template>

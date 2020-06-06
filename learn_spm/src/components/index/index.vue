@@ -1,8 +1,6 @@
 <template>
-    <div >
-        <p>this is index component</p>
-<!--        first page-->
-        <div id="theme">
+    <div style="">
+        <div id="theme" style="padding-top: 20px;padding-bottom: 20px">
             <leftPart ></leftPart>
             <rightPart @login-button-clicked="$refs['login-pop-up'].open()"
                        @register-button-clicked="$refs['register-pop-up'].open()"></rightPart>
@@ -36,10 +34,21 @@
             leftPart,rightPart,course,contentDesc,practice,team,login_pop_up,register_pop_up
         },
 
+        computed:{
+            userInfo(){
+                return this.$store.state.userInfo;
+            }
+        },
+
         methods:{
-            login(acc,pw){
+            async login(acc,pw){
                 console.log("login now!");
-                
+                let post=new URLSearchParams();
+                post.append('account', acc);
+                post.append('account', pw);
+                let userInfo=await this.axios.post('/api/php/login.php',post);
+                userInfo=JSON.parse(userInfo.data);
+                this.$store.state.userInfo=userInfo;
             },
             register(){
                 console.log("register now!");
@@ -50,9 +59,8 @@
 
 <style scoped>
     #theme{
-        width: 100%;
-        height: auto;
-        padding:0 15% 0 15%
+        width: 70%;
+        margin:0 auto;
     }
 
     #descriptions{
@@ -62,4 +70,4 @@
     div{
         box-sizing: border-box;
     }
-</style>
+</style>+
