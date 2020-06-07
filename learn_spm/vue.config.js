@@ -3,7 +3,7 @@ module.exports = {
     devServer: {
         proxy: {
             '/api': {
-                target: 'http://203.195.198.41',
+                target: 'http://203.195.198.41/learnSPM',
                 ws: true,
                 changeOrigin: true,
                 pathRewrite: {
