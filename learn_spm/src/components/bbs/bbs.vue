@@ -80,7 +80,7 @@
         mounted:function() {
             // let params = new URLSearchParams();
             // params.append('userid', '1');
-            this.axios.post('/api/php/getPosts.php').then((resp) => {
+            this.axios.post('/php/getPosts.php').then((resp) => {
                 console.log(resp.data);
                 this.posts = resp.data;
             })
