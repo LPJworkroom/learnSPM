@@ -98,7 +98,7 @@
             let params = new URLSearchParams();
             params.append('postid', '1');
             //let postid = {postid: 1};
-            this.axios.post('/api/php/getFloors.php', params).then((resp) => {
+            this.axios.post('/php/getFloors.php', params).then((resp) => {
                 console.log(resp.data);
                 this.floors = resp.data;
 
