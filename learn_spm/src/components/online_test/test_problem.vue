@@ -1,14 +1,18 @@
 <template>
     <div class="outer">
         <div class="inner">
-            <div class="list-group-item active">{{title}}</div>
-            <ul class="list-group">
-                <li v-for="(option,index) in options"
-                    class="list-group-item"
-                    :key="index"
-                    @click="select(index,$event)"
-                >{{String.fromCharCode('A'.charCodeAt()+index)}}.{{option}}</li>
-            </ul>
+            <div class="btn btn-primary" style="float:left;margin-right: 5%;">第{{index+1}}题.</div>
+            <div style="float:left;width: 80%">
+                <div class="list-group-item active">{{title}}</div>
+                <ul class="list-group">
+                    <li v-for="(option,index) in options"
+                        class="list-group-item"
+                        :key="index"
+
+                        @click="select(index,$event)"
+                    >{{String.fromCharCode('A'.charCodeAt()+index)}}.{{" "+option}}</li>
+                </ul>
+            </div>
         </div>
     </div>
 </template>
@@ -16,7 +20,7 @@
 <script>
     export default {
         name: "test_problem",
-        props:["title","options","answer"],
+        props:["title","options","answer","index"],
         data(){
             return{
                 childAnswer:this.answer,
@@ -54,7 +58,7 @@
         justify-content: center;
     }
     .inner{
-        width:50%;
+        width:60%;
     }
     .title{
         text-align:left;

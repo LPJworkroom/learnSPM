@@ -56,6 +56,7 @@
                             position: '0',
                             avatar:''
                     }
+                    this.$refs['login-pop-up'].close();
                 }
                 else if(acc === "student" && pw ==="123456"){
                     this.$store.state.userInfo={
@@ -64,6 +65,7 @@
                         position: '1',
                         avatar:''
                     }
+                    this.$refs['login-pop-up'].close();
                 }
                 //this.$store.state.userInfo=userInfo;
             },

@@ -18,19 +18,24 @@
                 <span> 或 </span>
                 <button v-on:click="parent.$emit('register-button-clicked')" class="btn btn-secondary">注册</button>
             </div>
-            <div v-else>
+            <div v-else class="userBar">
+                <span>欢迎，{{userState.account}}</span>
+                <span style="width: 10px"></span>
                 <div v-if="userState.position==='1'">
-                    <router-link :to="{name:'myScore'}" class="link">
+                    <router-link :to="{name:'myScore'}" class="btn btn-info" style="float:right">
                         我的成绩
                     </router-link>
                 </div>
                 <div v-if="userState.position==='0'">
                     <!--                should replace link from vuex store-->
-                    <router-link :to="{name:'manageTest'}" class="nav-item active">
+                    <router-link :to="{name:'manageTest'}" class="btn btn-info" style="float:right">
                         管理测试
                     </router-link>
                 </div>
-                <span>欢迎，{{userState.account}}</span>
+                <span style="width: 10px"></span>
+                <div>
+                    <button class="btn btn-danger" style="float:right" @click="logout">注销</button>
+                </div>
             </div>
         </nav>
 
@@ -66,8 +71,9 @@
         },
 
         methods:{
-            openPopUp(){
-
+            logout(){
+                this.$store.state.userInfo.isLogged=false;
+                window.location.href='/';
             },
         }
     }
@@ -81,14 +87,9 @@
 <style scoped>
     .userBar{
         float: right;
-        width: 20%;
-    }
-
-    .loginButton{
-
-    }
-    .registerButton{
-
+        /*width: 40%;*/
+        display: flex;
+        align-items: center;
     }
 
     span{

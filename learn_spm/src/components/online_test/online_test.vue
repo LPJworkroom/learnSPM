@@ -1,13 +1,14 @@
 <template>
     <div class="list-group" style="width: 70%;">
 <!--        <p>this is online_test component</p>-->
-        <test_problem class="list-group-item" style="border:none"
+        <test_problem class="list-group-item" style="border-left:none;border-right:none"
                 v-for = "(prob,index) in probList"
                 :title = "prob.title"
                 :options = "prob.options"
                 :key = "index"
                 :ref = "index"
                 :answer.sync = "answer[index]"
+                :index="index"
         ></test_problem>
         <button
                 @click="submit" class="btn btn-info btn-lg"
@@ -26,12 +27,12 @@
             return {
                 probList:[
                     {
-                        title:"哪个游戏要凉",
+                        title:"'OW'的意思是?",
                         options:[
                             "ow",
                             "overwatch",
-                            "守望先锋",
-                            "斗阵特攻",
+                            "overweight",
+                            "orbitwave",
                         ]
                     },
                     {
@@ -43,6 +44,22 @@
                             "4",
                         ]
                     },
+                    {
+                        title: "你很少出于纯粹的好奇心做什么事。",
+                        options: [
+                            "同意",
+                            "反对"
+                        ]
+                    },
+                    {
+                        title: "下列哪一种学习方式比较适合你？",
+                        options: [
+                            "丰富的学术依据，详尽的解析",
+                            "听老师讲课就足够，不需要其他辅助材料",
+                            "有其他辅助材料",
+                            "体验式的学习方式"
+                        ]
+                    }
                 ],
                 answer:[
                     undefined,

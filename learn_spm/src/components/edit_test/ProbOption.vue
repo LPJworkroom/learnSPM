@@ -3,7 +3,7 @@
         <label ><span>{{String.fromCharCode('A'.charCodeAt(0)+this.ind)}}.</span>
             <input type="text" v-model="descLcl" class="form-control" style="float:left;">
         </label>
-        <button class="btn btn-danger" style="float:right;">删除选项</button>
+        <button class="btn btn-danger" style="float:right;" @click="$emit('optionDeleted')">删除选项</button>
         <div style="clear: both"></div>
     </div>
 </template>
