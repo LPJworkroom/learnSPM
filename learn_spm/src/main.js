@@ -82,9 +82,9 @@ const router=new VueRouter({
 let store= new Vuex.Store({
   state: {
       userInfo:{
-        isLogged:true,
-        account: '1982932',
-        position: '1',
+        isLogged:false,
+        account: '',
+        position: '',
         avatar:''
       }
     // userInfo: {

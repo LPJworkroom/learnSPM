@@ -41,14 +41,31 @@
         },
 
         methods:{
+            // eslint-disable-next-line no-unused-vars
             async login(acc,pw){
-                console.log("login now!");
-                let post=new URLSearchParams();
-                post.append('account', acc);
-                post.append('account', pw);
-                let userInfo=await this.axios.post('/api/php/login.php',post);
-                userInfo=JSON.parse(userInfo.data);
-                this.$store.state.userInfo=userInfo;
+                // console.log("login now!");
+                // let post=new URLSearchParams();
+                // post.append('account', acc);
+                // post.append('account', pw);
+                // let userInfo=await this.axios.post('/api/php/login.php',post);
+                // userInfo=JSON.parse(userInfo.data);
+                if(acc === "teacher" && pw === "123456"){
+                    this.$store.state.userInfo={
+                        isLogged:true,
+                            account: 'teacher',
+                            position: '0',
+                            avatar:''
+                    }
+                }
+                else if(acc === "student" && pw ==="123456"){
+                    this.$store.state.userInfo={
+                        isLogged:true,
+                        account: 'student',
+                        position: '1',
+                        avatar:''
+                    }
+                }
+                //this.$store.state.userInfo=userInfo;
             },
             register(){
                 console.log("register now!");
