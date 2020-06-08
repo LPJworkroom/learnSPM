@@ -9,7 +9,7 @@
 
                 <div style="clear:both;"></div>
 
-                <div class="content">{{this.content}}</div>
+                <div class="content">回复给 {{this.replyTonick}}:{{this.content}}</div>
 
                 <div style="clear:both;"></div>
 
