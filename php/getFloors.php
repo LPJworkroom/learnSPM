@@ -56,11 +56,12 @@
 			$replytonickres = mysqli_query($con,"
 				select nick from userinfo 
 				where
-				id = (select publisher from floorinfo where postid = $postid and id = $sonfloorid)
+				id = (select publisher from floorinfo where postid = $postid and id = $sonreplytofloor)
 			;");
 			$replytonick = mysqli_fetch_array($replytonickres)['nick'];	
 			//构造该层对应的键值对数组元素
 			$eachsonfloor = ["floorid"=>$sonfloorid,"nick"=>$sonpnick,"content"=>$soncontent,"replyDate"=>$sonreplydate,"replyTonick"=>$replytonick];
+			//array_push($eachfloor['replyFloors'],1);
 			array_push($eachfloor['replyFloors'],$eachsonfloor);
 		}
 		array_push($retarr,$eachfloor);
@@ -74,5 +75,14 @@ select id,publisher,content,replydate,parentfloor,replyto
 from 
 floorinfo
 where postid=1
+
+
+select nick from userinfo 
+where
+id = (select publisher from floorinfo where postid = 1 and id = 3)
+
+select nick from userinfo 
+where
+id = (select publisher from floorinfo where postid = 1 and id = 3)
 */
 ?>

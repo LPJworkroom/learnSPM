@@ -26,6 +26,7 @@ create table postinfo
 /*
 insert into postinfo (publisher,title,publishtime) values (1,"Hello,everyone","2020-06-05 00:00:00");
 
+insert into postinfo (publisher,title,publishtime) values (2,"The second Post","2020-06-06 01:00:00");
 */
 
 create table floorinfo
@@ -47,4 +48,9 @@ insert into floorinfo (postid,publisher,content,replydate,parentfloor,replyto) v
 insert into floorinfo (postid,publisher,content,replydate,parentfloor,replyto) values (1,3,"creeper","2020-06-05 01:01:00",2,2);
 insert into floorinfo (postid,publisher,content,replydate,parentfloor,replyto) values (1,2,"ggez","2020-06-05 01:02:31",2,3);
 
+insert into floorinfo (postid,publisher,content,replydate,parentfloor,replyto) values (2,1,"hello,world","2020-06-05 00:00:00",0,0);
+insert into floorinfo (postid,publisher,content,replydate,parentfloor,replyto) values (2,2,"ok,hehe","2020-06-05 01:00:00",0,0);
+insert into floorinfo (postid,publisher,content,replydate,parentfloor,replyto) values (2,3,"fine","2020-06-05 01:01:00",2,2);
+insert into floorinfo (postid,publisher,content,replydate,parentfloor,replyto) values (2,2,"GG","2020-06-05 01:02:31",2,3);
+insert into floorinfo (postid,publisher,content,replydate,parentfloor,replyto) values (2,3,"GG","2020-06-05 01:02:31",2,3);
 */
