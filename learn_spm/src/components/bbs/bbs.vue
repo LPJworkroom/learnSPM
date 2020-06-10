@@ -80,7 +80,11 @@
         mounted:function() {
             // let params = new URLSearchParams();
             // params.append('userid', '1');
-            this.axios.post('/php/getPosts.php').then((resp) => {
+            //alert("kokokokokokok");
+            let url = process.env.VUE_APP_BASE_URL+"/php/getPosts.php"
+            //alert(process.env.NODE_ENV);
+            //alert(process.env.VUE_APP_BASE_URL);
+            this.axios.post(url).then((resp) => {
                 console.log(resp.data);
                 this.posts = resp.data;
             })

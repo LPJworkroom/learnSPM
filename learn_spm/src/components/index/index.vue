@@ -49,24 +49,52 @@
                 // post.append('account', pw);
                 // let userInfo=await this.axios.post('/api/php/login.php',post);
                 // userInfo=JSON.parse(userInfo.data);
-                if(acc === "teacher" && pw === "123456"){
-                    this.$store.state.userInfo={
-                        isLogged:true,
-                            account: 'teacher',
-                            position: '0',
+
+                let url = process.env.VUE_APP_BASE_URL+"/php/getLogin.php";
+                let params = new URLSearchParams();
+                //console.log(acc);
+                params.append('nick', acc);
+                params.append('password', pw);
+                this.axios.post(url,params).then((resp) => {
+                    console.log(resp.data);
+                    let rdata = resp.data;
+                    if(rdata['uid']!=0){
+                        this.$store.state.userInfo={
+                            isLogged:true,
+                            uid:rdata['uid'],
+                            account: acc,
+                            position: rdata['position'],
                             avatar:''
+                        }
+                        this.$refs['login-pop-up'].close();
                     }
-                    this.$refs['login-pop-up'].close();
-                }
-                else if(acc === "student" && pw ==="123456"){
-                    this.$store.state.userInfo={
-                        isLogged:true,
-                        account: 'student',
-                        position: '1',
-                        avatar:''
+                    else{
+                        alert("账户或密码错误");
+                        this.$refs['login-pop-up'].close();
                     }
-                    this.$refs['login-pop-up'].close();
-                }
+
+                })
+
+
+                // if(acc === "teacher" && pw === "123456"){
+                //     this.$store.state.userInfo={
+                //         isLogged:true,
+                //             account: 'teacher',
+                //             position: '0',
+                //             avatar:''
+                //     }
+                //     this.$refs['login-pop-up'].close();
+                // }
+                // else if(acc === "student" && pw ==="123456"){
+                //     this.$store.state.userInfo={
+                //         isLogged:true,
+                //         uid:1,
+                //         account: 'student',
+                //         position: '1',
+                //         avatar:''
+                //     }
+                //     this.$refs['login-pop-up'].close();
+                // }
                 //this.$store.state.userInfo=userInfo;
             },
             register(){

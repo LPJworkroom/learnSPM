@@ -37,7 +37,7 @@
 		;");
 		$publisher = mysqli_fetch_array($publisherres)['nick'];
 		$introres = mysqli_query($con,"
-			select content from floorinfo where postid = $postid and id = 1
+			select content from floorinfo where postid = $postid order by id limit 1
 		;");
 //echo "select content from floorinfo where postid = $postid and id = 1";
 		$introduction = mysqli_fetch_array($introres)['content'];

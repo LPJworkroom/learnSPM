@@ -83,6 +83,7 @@ let store= new Vuex.Store({
   state: {
       userInfo:{
         isLogged:false,
+        uid:undefined,
         account: '',
         position: '',
         avatar:''
@@ -104,3 +105,15 @@ new Vue({
   router,
   store,
 }).$mount('#app')
+
+//this.axios.defaults.baseURL = process.env.VUE_APP_BASE_URL;
+//alert(process.env.VUE_APP_BASE_URL);
+// if (process.env.NODE_ENV ==='development') {//生产环境，测试环境
+//   // serve 开发环境
+//   //alert("hehe");
+//
+//   this.axios.defaults.baseURL = process.env.VUE_APP_BASE_URL;
+// } else {
+//   // build 产品环境
+//   this.axios.defaults.baseURL = process.env.VUE_APP_BASE_URL;
+// }
