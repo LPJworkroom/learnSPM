@@ -15,6 +15,16 @@ export default {
   name: 'App',
   components: {
     navigator
+  },
+  created() {
+    if(this.$cookies.isKey('isLogged')){
+      let uinfo={};
+      uinfo.isLogged=this.$cookies.get("isLogged");
+      uinfo.uid=this.$cookies.get("uid");
+      uinfo.account=this.$cookies.get("account");
+      uinfo.position=this.$cookies.get("position");
+      this.$store.state.userInfo=uinfo;
+    }
   }
 }
 </script>

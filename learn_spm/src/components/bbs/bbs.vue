@@ -9,16 +9,22 @@
                 :post-id="post.id"
                 :key="post.id"
         ></post_info>
+        <reply_pop_up ref="reply_modal" @publishPost="publishPost"></reply_pop_up>
+        <button @click="$refs['reply_modal'].open()" class="btn btn-info btn-lg" style="width: 20%">回复</button>
     </div>
+
 </template>
 
 <script>
     // eslint-disable-next-line no-unused-vars
     import post_info from "./post_info";
+    // eslint-disable-next-line no-unused-vars
+    import modal from "../pop_up_window/modal";
+    import reply_pop_up from "./reply_pop_up";
     export default {
         name: "bbs",
         // eslint-disable-next-line vue/no-unused-components
-        components: {post_info},
+        components: {post_info,modal,reply_pop_up},
         data(){
             return {
                 posts:[],
@@ -88,6 +94,21 @@
                 console.log(resp.data);
                 this.posts = resp.data;
             })
+        },
+        methods:{
+            async publishPost(title,content){
+                //console.log(this.$store.state.userInfo.uid,title,content);
+                let url = process.env.VUE_APP_BASE_URL+"/php/publishPost.php";
+                let params = new URLSearchParams();
+                params.append('uid',this.$store.state.userInfo.uid);
+                params.append('title', title);
+                params.append('content', content);
+                this.axios.post(url, params).then((resp) => {
+                    console.log(resp.data);
+                    alert(resp.data);
+                });
+                this.$refs["reply_modal"].close();
+            }
         }
     }
 </script>

@@ -73,6 +73,11 @@
         methods:{
             logout(){
                 this.$store.state.userInfo.isLogged=false;
+                this.$cookies.remove('isLogged');
+                this.$cookies.remove('uid');
+                this.$cookies.remove('account');
+                this.$cookies.remove('position');
+                this.$cookies.remove('avatar');
                 window.location.href='/';
             },
         }

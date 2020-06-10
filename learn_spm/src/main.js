@@ -17,14 +17,17 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+import VueCookies from 'vue-cookies'
+
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
-
+Vue.use(VueCookies)   // 挂在在全局
 
 const router=new VueRouter({
   mode:'history',
+  base: process.env.NODE_ENV==='production'?'/learnSPM/':'/',
   routes:[
     {
       name:'index',
@@ -68,7 +71,7 @@ const router=new VueRouter({
     },
     {
       name:'post',
-      path:'/post',
+      path:'/post/postid/:postid',
       component: post
     },
     {
@@ -79,15 +82,18 @@ const router=new VueRouter({
   ]
 })
 
+let uinfo={
+  isLogged: false,
+  uid:undefined,
+  account:'',
+  position:'',
+  avatar:''
+};
+
+
 let store= new Vuex.Store({
   state: {
-      userInfo:{
-        isLogged:false,
-        uid:undefined,
-        account: '',
-        position: '',
-        avatar:''
-      }
+      userInfo:uinfo,
     // userInfo: {
     //   isLogged:false,
     //   account: undefined,
@@ -117,3 +123,5 @@ new Vue({
 //   // build 产品环境
 //   this.axios.defaults.baseURL = process.env.VUE_APP_BASE_URL;
 // }
+
+

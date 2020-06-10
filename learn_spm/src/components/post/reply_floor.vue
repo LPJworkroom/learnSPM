@@ -26,6 +26,7 @@
                     <template
                             slot="body"
                     >
+                        <span>内容</span>
                         <input type="text">
                     </template>
 

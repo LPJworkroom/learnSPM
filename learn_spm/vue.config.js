@@ -1,4 +1,5 @@
 module.exports = {
+    lintOnSave: false, // 关掉eslint
     // webpack-dev-server 相关配置
     devServer: {
         proxy: {
@@ -12,5 +13,5 @@ module.exports = {
             }
         }
     },
-    publicPath:process.env.NODE_ENV==="production"?'http://203.195.198.41/learnSPM/':'',
+    publicPath:process.env.NODE_ENV==='production'?'/learnSPM/':'/'
 }

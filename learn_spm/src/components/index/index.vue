@@ -66,6 +66,14 @@
                             position: rdata['position'],
                             avatar:''
                         }
+
+                        this.$cookies.set('isLogged', true, 60 * 60 * 24);
+                        this.$cookies.set('uid', rdata['uid'], 60 * 60 * 24);
+                        this.$cookies.set('account', acc, 60 * 60 * 24);
+                        this.$cookies.set('position', rdata['position'], 60 * 60 * 24);
+                        this.$cookies.set('avatar', '', 60 * 60 * 24);
+
+                        //alert(this.$cookie.get('isLogged'));
                         this.$refs['login-pop-up'].close();
                     }
                     else{

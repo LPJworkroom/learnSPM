@@ -19,6 +19,7 @@
             <template
                     slot="body"
             >
+                <span>内容</span>
                 <input type="text">
             </template>
 
@@ -95,9 +96,10 @@
             }
         },
         mounted:function() {
+            let pid = this.$route.params.postid;
             let url = process.env.VUE_APP_BASE_URL+"/php/getFloors.php";
             let params = new URLSearchParams();
-            params.append('postid', '1');
+            params.append('postid', pid);
             //let postid = {postid: 1};
             this.axios.post(url, params).then((resp) => {
                 console.log(resp.data);

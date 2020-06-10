@@ -1,10 +1,10 @@
 <template>
     <router-link
-            to="/post"
+            :to="'/post/postid/'+postId"
             tag="div"
             class="post"
     >
-        <div style="position: absolute;top: 0;right: 0;color: red;">X</div>
+<!--        <div style="position: absolute;top: 0;right: 0;color: red;">X</div>-->
         <div>{{this.title}}</div>
         <div>{{this.introduction}}</div>
         <ul>
