@@ -78,7 +78,7 @@
                 this.$cookies.remove('account');
                 this.$cookies.remove('position');
                 this.$cookies.remove('avatar');
-                window.location.href='/';
+                window.location.href=process.env.NODE_ENV==='production'?'/learnSPM/':'/';
             },
         }
     }

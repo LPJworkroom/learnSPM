@@ -108,6 +108,7 @@
                     alert(resp.data);
                 });
                 this.$refs["reply_modal"].close();
+                window.reload();
             }
         }
     }

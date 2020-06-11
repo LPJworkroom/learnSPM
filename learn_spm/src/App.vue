@@ -2,7 +2,7 @@
   <div id="app">
     <navigator></navigator>
     <div style="margin-top:20px">
-      <router-view style="margin:0 auto"></router-view>
+      <router-view v-if="isRouterAlive" style="margin:0 auto"></router-view>
     </div>
   </div>
 </template>
@@ -15,6 +15,26 @@ export default {
   name: 'App',
   components: {
     navigator
+  },
+  provide (){
+    return{
+      reload:this.reload
+    };
+  },
+  data(){
+    return {
+      isRouterAlive:true
+    };
+  },
+  methods:{
+    async reload(){
+      this.isRouterAlive = false;
+      // this.$nextTick(function(){
+      //   this.isRouterAlive = true;
+      // });
+      await this.$nextTick();
+      this.isRouterAlive = true;
+    },
   },
   created() {
     if(this.$cookies.isKey('isLogged')){

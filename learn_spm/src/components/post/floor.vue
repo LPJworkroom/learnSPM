@@ -15,26 +15,7 @@
 
                 <div class="replyDate">{{this.replyDate}}</div>
 <!--回复弹窗组件-->
-                <modal ref="reply_modal">
-                    <template
-                            slot="header"
-                    >
-                        <p>回复</p>
-                    </template>
-
-                    <template
-                            slot="body"
-                    >
-                        <span>内容</span>
-                        <input type="text">
-                    </template>
-
-                    <template
-                            slot="footer"
-                    >
-                        <button @click="replyFloor" class="btn btn-info">提交</button>
-                    </template>
-                </modal>
+                <floor_pop_up ref="reply_modal" @replyPost="replyFloor"></floor_pop_up>
 <!--回复弹窗组件结束-->
                 <button class="btn btn-info" @click="$refs['reply_modal'].open()">回复</button>
             </div>
@@ -62,11 +43,11 @@
 <script>
     // eslint-disable-next-line no-unused-vars
     import reply_floor from "./reply_floor";
-    // eslint-disable-next-line no-unused-vars
-    import modal from "../pop_up_window/modal";
+    import floor_pop_up from "./floor_pop_up";
     export default {
         name: "floor",
-        components:{reply_floor,modal},
+        components:{reply_floor,floor_pop_up,},
+        inject:['reload'],
         props:[
             "floorid",
             "nick",
@@ -84,7 +65,7 @@
             };
         },
         methods:{
-            replyFloor:function(){
+            async replyFloor(content){
                 /*
                     得到当前用户的userid,nick
                     获取该楼中楼的属于哪一层楼，回复的是哪一层楼：this.my_floorid,this.my_floorid
@@ -93,6 +74,28 @@
                     传递给后端
 
                  */
+                let pid = this.$route.params.postid;
+                let publisher = this.$store.state.userInfo.uid;
+                let parentfloor = this.my_floorid;
+                let replyto = this.my_floorid;
+                console.log(pid,publisher,content,parentfloor,replyto);
+
+                let url = process.env.VUE_APP_BASE_URL+"/php/replyFloor.php";
+                let params = new URLSearchParams();
+                params.append('postid', pid);
+                params.append('publisher',publisher);
+                params.append('content', content);
+                params.append('parentfloor', parentfloor);
+                params.append('replyto', replyto);
+                //let postid = {postid: 1};
+                this.axios.post(url, params).then((resp) => {
+                    console.log(resp.data);
+                    //this.floors = resp.data;
+                    //alert(resp.data);
+                });
+                this.$refs["reply_modal"].close();
+                //this.$emit('re_request');
+                this.reload();
             }
         },
         watch:{

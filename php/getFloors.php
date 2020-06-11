@@ -49,7 +49,7 @@
 			$sonpnickres = mysqli_query($con,"
 				select nick from userinfo
 				where 
-				id = $publisherid
+				id = $sonpublisherid
 			;");
 			$sonpnick = mysqli_fetch_array($sonpnickres)['nick'];
 			
