@@ -82,6 +82,21 @@
                 console.log(this.answer);
                 //console.log(this.$refs);
             },
+            getProblems(){
+                let tid = this.$route.params.testid;
+                let url = process.env.VUE_APP_BASE_URL+"/php/getProblems.php";
+                let params = new URLSearchParams();
+                params.append('testid', tid);
+                //let postid = {postid: 1};
+                this.axios.post(url, params).then((resp) => {
+                    console.log(resp.data);
+                    this.probList = resp.data;
+
+                });
+            },
+        },
+        mounted() {
+            this.getProblems();
         }
     }
 </script>

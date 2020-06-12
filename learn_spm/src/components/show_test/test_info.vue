@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <router-link :to="{name:'onlineTest'}" tag="div" class="testname">{{info.name}}</router-link>
+        <router-link :to="{name:'onlineTest',params: { testid: this.info.id }}" tag="div" class="testname">{{info.name}}</router-link>
         <div class="clearfloat"></div>
         <div>
             <div class="leftinfo">
@@ -20,6 +20,9 @@
         name: "test_info",
         props:{
             info: {type:Object}
+        },
+        methods:{
+
         },
     }
 </script>

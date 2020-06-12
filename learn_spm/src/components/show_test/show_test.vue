@@ -32,6 +32,15 @@
                 ],
             };
         },
+        mounted:function() {
+            // let params = new URLSearchParams();
+            // params.append('userid', '1');
+            let url = process.env.VUE_APP_BASE_URL+"/php/getTestinfo.php";
+            this.axios.post(url).then((resp) => {
+                console.log(resp.data);
+                this.testInfo = resp.data;
+            })
+        },
     }
 </script>
 

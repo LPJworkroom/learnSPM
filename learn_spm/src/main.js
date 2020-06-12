@@ -76,7 +76,7 @@ const router=new VueRouter({
     },
     {
       name:'onlineTest',
-      path:'/onlineTest',
+      path:'/onlineTest/testid/:testid',
       component: online_test
     }
   ]
