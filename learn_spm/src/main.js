@@ -12,10 +12,13 @@ import about from "@/components/about/about";
 import post from "./components/post/post";
 import show_test from "@/components/show_test/show_test";
 import online_test from "@/components/online_test/online_test";
+import score_analyse from "@/components/score_analyse/score_analyse";
 import './plugins/axios'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+
 
 import VueCookies from 'vue-cookies'
 
@@ -78,6 +81,11 @@ const router=new VueRouter({
       name:'onlineTest',
       path:'/onlineTest/testid/:testid',
       component: online_test
+    },
+    {
+      name:'scoreAnalyse',
+      path:'/scoreAnalyse',
+      component:score_analyse
     }
   ]
 })

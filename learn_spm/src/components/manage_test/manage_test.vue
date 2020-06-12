@@ -10,6 +10,7 @@
                 :un-pass-num="testinfo.unPassNum"
                 :key="index"
         ></test_info>
+        <router-link :to="{name:'editTest'}" tag="button" class="btn btn-primary" style="width: 10%;margin-top: 15px">创建测试</router-link>
     </div>
 
 </template>
