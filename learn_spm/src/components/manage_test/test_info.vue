@@ -11,10 +11,11 @@
             <div class="rightinfo">
                 <span class="iteminfo">{{warningLine}}</span>
                 <span class="iteminfo">{{unPassNum}}</span>
-                <router-link to="/editTest" tag="button" class="btn btn-info">编辑测试</router-link>
+                <router-link :to="{name:'scoreAnalyse'}" tag="button" class="btn btn-info">分析成绩</router-link>
 <!--                <button>编辑测试</button>-->
             </div>
         </div>
+
     </div>
 
 </template>
