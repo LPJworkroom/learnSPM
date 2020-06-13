@@ -84,7 +84,7 @@ const router=new VueRouter({
     },
     {
       name:'scoreAnalyse',
-      path:'/scoreAnalyse',
+      path:'/scoreAnalyse/testid/:testid',
       component:score_analyse
     }
   ]

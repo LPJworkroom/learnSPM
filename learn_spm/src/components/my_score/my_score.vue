@@ -20,22 +20,42 @@
         components: {Test_info},
         data(){
             return {
-                testsInfo:[
-                    {
-                        testid:1,
-                        testName: "单元一测试",
-                        warningLine:60,
-                        myScore:70,
-                    },
-                    {
-                        testid:2,
-                        testName: "单元二测试",
-                        warningLine:70,
-                        myScore: 60,
-                    },
-                ],
+                testsInfo:[],
+                // testsInfo:[
+                //     {
+                //         testid:1,
+                //         testName: "单元一测试",
+                //         warningLine:60,
+                //         myScore:70,
+                //     },
+                //     {
+                //         testid:2,
+                //         testName: "单元二测试",
+                //         warningLine:70,
+                //         myScore: 60,
+                //     },
+                // ],
             };
         },
+
+        methods:{
+            getScoreinfo(){
+                //let tid = this.$route.params.testid;
+                let url = process.env.VUE_APP_BASE_URL+"/php/getScoreinfo.php";
+                let params = new URLSearchParams();
+                params.append('userid', this.$store.state.userInfo.uid);
+                //let postid = {postid: 1};
+                this.axios.post(url,params).then((resp) => {
+                    console.log(resp.data);
+                    this.testsInfo = resp.data;
+
+                });
+            },
+        },
+
+        beforeMount() {
+            this.getScoreinfo();
+        }
     }
 </script>
 
