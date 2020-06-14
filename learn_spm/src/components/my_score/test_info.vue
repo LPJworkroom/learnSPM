@@ -1,7 +1,7 @@
 <template>
     <div :class="{redBG:isRed}">
-        <router-link to="/" tag="div" class="testname">{{testName}}</router-link>
-<!--        <div class="testname">{{testName}}</div>-->
+<!--        <router-link to="/" tag="div" class="testname">{{testName}}</router-link>-->
+        <div class="testname">{{testName}}</div>
         <div class="clearfloat"></div>
         <div>
             <div class="leftinfo">
@@ -25,9 +25,15 @@
             };
         },
         props: ['testid','testName','warningLine','myScore'],
+
         methods:{
             changeBG(){
-                if(this.myScore<this.warningLine){
+                if(parseInt(this.myScore)<parseInt(this.warningLine)){
+                    //console.log(typeof this.myScore);
+                    //console.log(100<60);
+                    //console.log(this.myScore<this.warningLine);
+                    //console.log(this.myScore,this.warningLine);
+                    //console.log("fffkfkfkfkfk");
                     this.isRed=true;
                 }
             }

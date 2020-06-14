@@ -26,25 +26,16 @@
             return{
                 probs:[
                     {
-                        title:'题目1',
+                        title:'prob1',
                         options:["dsfsdf","ssssss","sdfsdfsdfs","aaaaa"],
                         solution:0,
                     },
                     {
-                        title:'题目2',
-                        options:["dsfsdf","ssssss","sdfsdfsdfs","aaaaa"],
+                        title:'prob2',
+                        options:["dsfsdf","ssssss"],
                         solution:0,
                     },
-                    {
-                        title:'题目3',
-                        options:["dsfsdf","ssssss","sdfsdfsdfs","aaaaa"],
-                        solution:0,
-                    },
-                    {
-                        title:'题目4',
-                        options:["dsfsdf","ssssss","sdfsdfsdfs","aaaaa"],
-                        solution:0,
-                    },
+
                 ],
             }
         },
@@ -52,7 +43,16 @@
         methods:{
             submitEdit(){
                 //let out=Object(this.probs);
+                let url = process.env.VUE_APP_BASE_URL+"/php/editTest.php";
+                let params = new URLSearchParams();
+                params.append('userid', this.$store.state.userInfo.uid);
+                params.append("probinfo",JSON.stringify(this.probs));
+                //let postid = {postid: 1};
+                this.axios.post(url, params).then((resp) => {
+                    //console.log(resp.data);
+                    //this.probList = resp.data;
 
+                });
                 console.log(JSON.stringify(this.probs));
             },
             deleteProblem(id){

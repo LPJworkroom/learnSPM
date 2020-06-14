@@ -69,18 +69,35 @@
         },
         methods:{
             submit:function(){
-                this.probList.forEach((item,index)=>{
-                    let refVal = index.toString();
-                    this.answer[index]=this.$refs[refVal][0].answer;
-                    if(this.answer[index] === undefined){
+                // eslint-disable-next-line no-unused-vars
+                for(let [key, value] of this.probList.entries()){
+                    let refVal = key.toString();
+                    this.answer[key]=this.$refs[refVal][0].answer;
+                    if(this.answer[key] === undefined){
                         alert("有题目未答，请答完再提交");
                         return;
                     }
-                    //alert(this.$refs[refVal].answer);
-                    //console.log(this.$refs[refVal][0].answer);
-                });
+                }
+
                 console.log(this.answer);
-                //console.log(this.$refs);
+
+                //submit answer to server
+                let tid = this.$route.params.testid;
+                let url = process.env.VUE_APP_BASE_URL+"/php/submitTest.php";
+                let params = new URLSearchParams();
+                params.append('testid', tid);
+                params.append('answer', this.answer);
+                params.append("uid",this.$store.state.userInfo.uid);
+                //let postid = {postid: 1};
+                this.axios.post(url, params).then((resp) => {
+                    console.log(resp.data);
+                    if(resp.data == "0"){
+                        alert("提交失败");
+                    }
+                    else{
+                        alert("提交成功");
+                    }
+                });
             },
             getProblems(){
                 let tid = this.$route.params.testid;

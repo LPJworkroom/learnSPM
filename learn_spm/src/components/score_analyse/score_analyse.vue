@@ -19,6 +19,23 @@
                     {userAcc:'stu3',score:11,},
                 ]
             }
+        },
+        methods:{
+            getScores(){
+                let tid = this.$route.params.testid;
+                let url = process.env.VUE_APP_BASE_URL+"/php/getUserScore.php";
+                let params = new URLSearchParams();
+                params.append('testid', tid);
+                //let postid = {postid: 1};
+                this.axios.post(url, params).then((resp) => {
+                    console.log(resp.data);
+                    this.score = resp.data;
+
+                });
+            },
+        },
+        mounted() {
+            this.getScores();
         }
 
     }

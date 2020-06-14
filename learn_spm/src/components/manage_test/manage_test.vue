@@ -2,8 +2,8 @@
     <div class="list-group" style="width: 70%">
         <test_info class="list-group-item"
                 v-for="(testinfo,index) in testsInfo"
-                :testid="testinfo.testid"
-                :test-name="testinfo.testName"
+                :testid="testinfo.id"
+                :test-name="testinfo.name"
                 :create-date="testinfo.createDate"
                 :complete-num="testinfo.completeNum"
                 :warning-line="testinfo.warningLine"
@@ -25,16 +25,16 @@
             return {
                 testsInfo:[
                     {
-                        testid:1,
-                        testName: "单元一测试",
+                        id:1,
+                        name: "单元一测试",
                         createDate:"2020-01-01 12:00:00",
                         completeNum:35,
                         warningLine:60,
                         unPassNum:10,
                     },
                     {
-                        testid:2,
-                        testName: "单元二测试",
+                        id:2,
+                        name: "单元二测试",
                         createDate:"2020-02-01 12:00:00",
                         completeNum:40,
                         warningLine:70,
@@ -43,6 +43,18 @@
                 ],
             };
         },
+        methods:{
+            getTestInfo(){
+                let url = process.env.VUE_APP_BASE_URL+"/php/getTestinfo.php";
+                this.axios.post(url).then((resp) => {
+                    console.log(resp.data);
+                    this.testsInfo = resp.data;
+                });
+            }
+        },
+        mounted() {
+            this.getTestInfo();
+        }
     }
 </script>
 
